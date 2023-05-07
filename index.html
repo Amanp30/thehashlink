@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My App</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      .pageview {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+      .btngrp {
+        position: sticky;
+        top: 0;
+        background: beige;
+        display: flex;
+        padding: 1em;
+        align-items: center;
+        justify-content: center;
+        gap: 5%;
+      }
+      /* style the target div when it is targeted */
+      #myDiv:target {
+        background-color: yellow;
+      }
+
+      h2 {
+        font-size: 7.2rem;
+      }
+
+      .btngrp button {
+        padding: 1.5em;
+        background: black;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btngrp">
+      <button onclick="intro()">Intro</button>
+      <button onclick="about()">About</button>
+      <button onclick="services()">Services</button>
+      <button onclick="contact()">Contact</button>
+      <button onclick="testimonial()">Testimonial</button>
+      <button onclick="privacy()">Privacy</button>
+      <button onclick="others()">Others</button>
+    </div>
+
+    <div id="intro" class="pageview" style="background-color: aqua">
+      <h2>Intro</h2>
+    </div>
+
+    <div id="about" class="pageview" style="background-color: orange">
+      <h2>About</h2>
+    </div>
+    <div id="services" class="pageview" style="background-color: red">
+      <h2>services</h2>
+    </div>
+    <div id="contact" class="pageview" style="background-color: whitesmoke">
+      <h2>Contact</h2>
+    </div>
+    <div class="pageview testimonial" style="background-color: yellowgreen">
+      <h2>Testimonial</h2>
+    </div>
+    <div class="pageview" name="privacy" style="background-color: red">
+      <h2>Privacy</h2>
+    </div>
+    <div class="pageview" name="others" style="background-color: white">
+      <h2>Others</h2>
+    </div>
+
+    <script src="https://unpkg.com/thehashlink@1.0.1/dist/bundle.js"></script>
+
+    <script>
+      const hashlink = new Hashlink({ scroll: "smooth" });
+      const intro = hashlink.goto("intro");
+      const about = hashlink.goto("about");
+      const services = hashlink.goto("services");
+      const contact = hashlink.goto("contact");
+      const newtestimonial = hashlink.new("testimonial");
+      const testimonial = hashlink.goto(newtestimonial);
+      hashlink.setbyclass("testimonial", newtestimonial);
+      const newprivacy = hashlink.new("privacy");
+      const privacy = hashlink.goto(newprivacy);
+      hashlink.setbyname("privacy", newprivacy);
+      const newothers = hashlink.new("others");
+      const others = hashlink.goto(newothers);
+      hashlink.setbyname("others", newothers);
+    </script>
+  </body>
+</html>
